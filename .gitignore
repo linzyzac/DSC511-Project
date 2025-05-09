@@ -1,3 +1,15 @@
+# Ignore the entire sample_df folder (which includes sample_df.parquet and sample_df2.zip if placed inside)
 sample_df/
+
+# Ignore top-level ZIP and Parquet files (in case they exist outside the folder)
 sample_df.parquet
+sample_df2.zip
+
+# VS Code and Jupyter-related ignores
+.vscode/
+.ipynb_checkpoints/
+
+# Python and macOS metadata
+__pycache__/
+.DS_Store
 
