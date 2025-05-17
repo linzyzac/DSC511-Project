@@ -1,0 +1,25 @@
+Team:
+Antria Ioannou
+Elina Zachariou
+Evi Christodoulou
+
+All team members have worked equally in this project, in some cases we have worked on a single machine.
+
+
+Overview:
+Our dataset includes Steam reviews of some apps, in multiple languages. Initially the dataset included 21 million observations which were alot for our machines to process so we took a sample of only the English reviews.
+The dataset includes multiple other columns (such as the app name, the actual review, whether the user recommends the app, etc).
+Initially we have performed any required cleaning (such as dropping missing values)  and then an EDA to identify insights and created some plots for better visual inspection. Additionally, we have selected specific columns to keep (the ones that we considered important for our project) to reduce the amount of data being transferred in the following sections. We have renamed certain columns for easier retrieval. 
+
+Recommendation system:
+We observed significant class imbalance between recommended and not recommended apps. Initially we tried stratified sampling but it returned 0 rows. We fixed the class imbalance later.
+Due to our first sample being extremely large for our machines, we took another smaller sample (sample_df2) for this task. Using a lexicon (Vader) we have tried multiple approaches for predicting a missing rating for an app. A problem that we have faced during these approaches was predicting ratings out of bounds.
+Approaches: 
+1. Vader gives sentiment to each review, which we transformed into a rating (based on our intuition). We have trained an ALS model and found RMSE on unseen data (RMSE=2.1454)
+2. Another approach was to normalize the ratings before predicting. This achieved a better RMSE of 1.7958
+3. Keep sentiment provided by vader as is (not converting it to rating) but normalize it to have only positive sentiment and then bring back to original scale. RMSE = 0.8951
+4. Same as 3, but without normalizing (keeping negative sentiments). RMSE = 0.5760
+5. Downsample majority class to have balanced recommended column. Transform Recommended column to 0,1 (instead of Boolean) and perform collaborative filtering on this column. RMSE = 0.5847.
+6. then we tried some content based with several feature combinations
+And finally we have performed Sentiment Analysis of the reviews
+
